@@ -1,16 +1,9 @@
 using System.Collections;
 using NUnit.Framework;
 using UnityEngine.TestTools;
-using Game.Presenter;
-using Game.Model;
-using Game.View;
 
 public class Test
 {
-
-    GameUIView gameUIView;
-    GameModel gameModel;
-    GameUIPresenter gamePresenter;
     // A Test behaves as an ordinary method
     [Test]
     public void TestSimplePasses()
