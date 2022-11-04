@@ -11,7 +11,7 @@ namespace Game
         GamePresenter _presenter;
 
         [SerializeField] Button _buttonThrow;
-
+        [SerializeField] TurnResult[] _turnResultsUI;
 
 
         private void Awake()
@@ -19,6 +19,12 @@ namespace Game
             _presenter = new GamePresenter(this);
 
             _buttonThrow.onClick.AddListener(_presenter.Throw);  
+        }
+
+
+        public void UpdateScoreBoard(int currentTurn, int indexPos, string print)
+        {
+            _turnResultsUI[currentTurn].NumberTurnText(indexPos, print);
         }
 
         internal void EndGame()

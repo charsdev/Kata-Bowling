@@ -12,10 +12,12 @@ namespace Game
         const int _maxPines = 10;
         const int _maxThrows = 2;
 
-
         int _throwIndex = 1;
         int _leftPines = _maxPines;
         int _roundIndex = 1;
+
+
+       
 
         public string Throw()
         {
@@ -23,15 +25,10 @@ namespace Game
             if (_throwIndex == 1)
             {
                 fall = Random.Range(0, _maxPines + 1);
-                CleanPines(fall);
+               
                 if (!ThereStandPines())
-                {
-                    Debug.LogError($"Tiraste: {fall} Turn: {_throwIndex} Ronda:{_roundIndex} Strike! ");
+                {                  
                     return "X";
-                }
-                else
-                {
-                    _throwIndex++;
                 }
 
                 return fall.ToString();
@@ -39,23 +36,20 @@ namespace Game
 
             fall = Random.Range(0, _leftPines + 1);
 
-            CleanPines(fall);
             if (!ThereStandPines())
             {
-                Debug.LogError($"Tiraste: {fall} Turn: {_throwIndex} Ronda:{_roundIndex} Spare! ");
-                NewRound();
                 return "/";
             }
-            NewRound();
+            
             return fall.ToString();
         }
 
         public bool ThereStandPines() => _leftPines != 0;
         
-        void CleanPines(int amount) => _leftPines -= amount;
+        public void CleanPines(int amount) => _leftPines -= amount;
         
 
-        void NewRound()
+        public void NewRound()
         {
             if (EndGame()) return;
             
@@ -70,6 +64,9 @@ namespace Game
         }
 
 
+        public void StartNextThrow() { _throwIndex++; }
+        public int GetCurrentTurn() => _roundIndex;
+        public int GetThrowIndex() => _throwIndex;
 
     }
 }

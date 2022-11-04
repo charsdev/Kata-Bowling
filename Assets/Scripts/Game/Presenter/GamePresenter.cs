@@ -5,10 +5,14 @@ using UnityEngine;
 
 namespace Game
 {
-    public class GamePresenter 
+    public class GamePresenter
     {
         GameView _view;
         GameModel _model;
+
+
+
+
 
         public GamePresenter(GameView view)
         {
@@ -18,15 +22,24 @@ namespace Game
 
         public void Throw()
         {
-            
-            Debug.LogError(_model.Throw());
-            if (_model.EndGame()) 
+            string resultThrow = _model.Throw(); 
+
+
+            _view.UpdateScoreBoard(_model.GetCurrentTurn() - 1, _model.GetThrowIndex(), resultThrow);
+
+
+            if (resultThrow == "X" || _model.GetThrowIndex() == 2)
             {
-                _view.EndGame();
+                _model.NewRound();
             }
+            else
+            {
+                _model.CleanPines(int.Parse(resultThrow));
+                _model.StartNextThrow();
+            }
+
+
+
         }
-
-
-        
     }
 }
