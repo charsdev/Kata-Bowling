@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -7,15 +5,15 @@ namespace Game
 {
     public class TurnResult : MonoBehaviour
     {
-        [SerializeField] bool isLastResult;
-        [SerializeField] TextMeshProUGUI[] textTurns;
+        [SerializeField] private bool _isLastResult;
+        [SerializeField] private TextMeshProUGUI[] textTurns;
 
-
-        public void NumberTurnText(int textPlace, string s)
+        public void SetNumberTurn(uint textPlace, string s)
         {
-            textTurns[textPlace].text = s;            
+            if (textTurns[textPlace] != null)
+            {
+                textTurns[textPlace].text = s;
+            }
         }
     }
-
-
 }

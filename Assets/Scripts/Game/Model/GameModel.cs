@@ -1,72 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 namespace Game
 {
     public class GameModel
     {
-        int _totalScore;
+        private const uint TotalTurns = 10;
+        private const uint MaxPines = 10;
+        private const string StrikeMark = "X";
+        private const string SpareMark = "/";
+        private const string GutterMark = "-";
 
-        const int _totalTurns = 10;
-        const int _maxPines = 10;
-        const int _maxThrows = 2;
+        private uint _leftPines = MaxPines;
+        private uint _rollIndex = 1;
+        private uint _roundIndex = 1;
 
-        int _throwIndex = 1;
-        int _leftPines = _maxPines;
-        int _roundIndex = 1;
-
-
-       
-
-        public string Throw()
+        public string GetScoreMark(uint score, uint rollIndex)
         {
-            int fall = 0;
-            if (_throwIndex == 1)
+            if (IsStrike(rollIndex, score))
             {
-                fall = Random.Range(0, _maxPines + 1);
-               
-                if (!ThereStandPines())
-                {                  
-                    return "X";
-                }
-
-                return fall.ToString();
+                return StrikeMark;
             }
-
-            fall = Random.Range(0, _leftPines + 1);
-
-            if (!ThereStandPines())
+            else if (IsSpare(rollIndex, score))
             {
-                return "/";
+                return SpareMark;
             }
-            
-            return fall.ToString();
+            else if (IsGutter(score))
+            {
+                return GutterMark;
+            }
+            else
+            {
+                return score.ToString();
+            }
         }
 
-        public bool ThereStandPines() => _leftPines != 0;
-        
-        public void CleanPines(int amount) => _leftPines -= amount;
-        
-
-        public void NewRound()
+        public void NextRound()
         {
-            if (EndGame()) return;
-            
-            _roundIndex++;       
-            _throwIndex = 1;
-            _leftPines = _maxPines;
+            _roundIndex++;
+            _rollIndex = 1;
+            _leftPines = MaxPines;
         }
 
-        public bool EndGame()
+        public uint GetPinesByTurn(uint turn) => turn > 1 ? _leftPines : MaxPines;
+
+        public void CheckScore(uint currentRound, uint rollResult)
         {
-            return _roundIndex > _totalTurns;
+            if (IsStrike(currentRound, rollResult) || GetRollIndex() == 2)
+            {
+                NextRound();
+            }
+            else
+            {
+                CleanPines(rollResult);
+                NextRoll();
+            }
         }
 
-
-        public void StartNextThrow() { _throwIndex++; }
-        public int GetCurrentTurn() => _roundIndex;
-        public int GetThrowIndex() => _throwIndex;
-
+        public bool IsStrike(uint turn, uint fallPines) => fallPines == MaxPines && turn == 1;
+        public bool IsSpare(uint turn, uint fallPines) => fallPines == _leftPines && turn > 1;
+        public bool IsGutter(uint fallPines) => fallPines < 1;
+        public void CleanPines(uint amount) => _leftPines -= amount;
+        public bool IsEndGame() => _roundIndex > TotalTurns;
+        public void NextRoll() => _rollIndex++;
+        public uint GetCurrentRound() => _roundIndex;
+        public uint GetRollIndex() => _rollIndex;
     }
 }
