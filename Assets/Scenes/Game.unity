@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.063218825, g: 0.063194014, b: 0.063218825, a: 1}
+  m_IndirectSpecularColor: {r: 0.06317, g: 0.06330868, b: 0.06317, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -512,6 +512,7 @@ MonoBehaviour:
   - {fileID: 742106693}
   - {fileID: 1944518125}
   - {fileID: 1277481782}
+  total: 0
 --- !u!114 &35772675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,6 +853,7 @@ MonoBehaviour:
   - {fileID: 1520095918}
   - {fileID: 290400609}
   - {fileID: 1623904786}
+  total: 0
 --- !u!114 &77273280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,12 +1016,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c0bab47ca88c0499cf20cd7c62b3de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isLastResult: 0
+  _isLastResult: 1
   textTurns:
   - {fileID: 226286505}
   - {fileID: 650438120}
   - {fileID: 916986513}
   - {fileID: 512925372}
+  total: 0
 --- !u!1 &118612988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,6 +3029,7 @@ MonoBehaviour:
   - {fileID: 600040298}
   - {fileID: 200032369}
   - {fileID: 172658552}
+  total: 0
 --- !u!114 &338305454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3139,6 +3143,7 @@ MonoBehaviour:
   - {fileID: 1120979783}
   - {fileID: 416975819}
   - {fileID: 408968347}
+  total: 0
 --- !u!114 &344366868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6120,6 +6125,7 @@ MonoBehaviour:
   - {fileID: 3029831}
   - {fileID: 703490784}
   - {fileID: 1477887523}
+  total: 0
 --- !u!114 &881196330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6445,6 +6451,7 @@ MonoBehaviour:
   - {fileID: 1882075435}
   - {fileID: 292951263}
   - {fileID: 250422412}
+  total: 0
 --- !u!114 &921807878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6609,11 +6616,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isLastResult: 0
   textTurns:
-  - {fileID: 0}
   - {fileID: 1550274135}
   - {fileID: 403039928}
-  - {fileID: 0}
   - {fileID: 2064669290}
+  total: 0
 --- !u!114 &1013277072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7484,6 +7490,7 @@ MonoBehaviour:
   - {fileID: 1978486081}
   - {fileID: 2068559033}
   - {fileID: 1057344243}
+  total: 0
 --- !u!114 &1122413842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9896,7 +9903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.2, y: 0.8527}
+  m_AnchoredPosition: {x: 0.67499, y: 0.8527}
   m_SizeDelta: {x: 28.007, y: 31.222}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550274135
@@ -9919,7 +9926,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11054,6 +11063,7 @@ MonoBehaviour:
   - {fileID: 1366147603}
   - {fileID: 1916757913}
   - {fileID: 525638401}
+  total: 0
 --- !u!114 &1667229862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13832,7 +13842,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

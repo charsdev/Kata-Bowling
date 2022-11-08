@@ -6,7 +6,7 @@ namespace Game
     {
         private readonly GameView _view;
         private readonly GameModel _model;
-        
+
         public GamePresenter(GameView view)
         {
             _view = view;
@@ -39,8 +39,11 @@ namespace Game
             var turnPines = _model.GetPinesByTurn(currentRollIndex);
             var rollResult = GetRandomFallPines((int)turnPines);
             var mark = _model.GetScoreMark(rollResult, currentRollIndex);
-            _model.CheckScore(currentRound, rollResult);
-            _view.UpdateScoreBoard(currentRound - 1, currentRollIndex, mark);
+            _view.UpdateTotalScore(currentRound -1, _model.HandleTotalResult(mark));            
+            _model.CheckScore(currentRollIndex, rollResult);
+            _view.UpdateScoreBoard(currentRound - 1, currentRollIndex - 1, mark);
         }
+
+
     }
 }

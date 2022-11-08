@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,11 @@ namespace Game
         internal Ball GetBall()
         {
             return _ball;
+        }
+
+        internal void UpdateTotalScore(uint currentTurn, int v)
+        {
+            _turnResultsUI[currentTurn].SetTotal(v);
         }
     }
 }

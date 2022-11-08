@@ -9,7 +9,11 @@ public class Test
     GameModel _gameModel = new GameModel();
 
     
+    [Test]
+    public void CheckStart()
+    {
 
+    }
     
    /* [UnityTest]
     public IEnumerator TestWithEnumeratorPasses()
