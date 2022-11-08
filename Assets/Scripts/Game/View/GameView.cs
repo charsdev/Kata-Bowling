@@ -17,7 +17,7 @@ namespace Game
             _buttonThrow.onClick.AddListener(_presenter.Throw);
         }
 
-        public void UpdateScoreBoard(uint currentTurn, uint indexPos, string print)
+        public void UpdateScoreBoard(int currentTurn, int indexPos, string print)
         {
             _turnResultsUI[currentTurn].SetNumberTurn(indexPos, print);
         }
@@ -32,9 +32,9 @@ namespace Game
             return _ball;
         }
 
-        internal void UpdateTotalScore(uint currentTurn, int v)
+        internal void UpdateTotalScore(int currentTurn, int v)
         {
-            _turnResultsUI[currentTurn].SetTotal(v);
+          //  _turnResultsUI[currentTurn].SetTotal(v);
         }
     }
 }

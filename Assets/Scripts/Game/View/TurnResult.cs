@@ -11,8 +11,7 @@ namespace Game
         [SerializeField] private TextMeshProUGUI[] textTurns;
         [SerializeField] private int total;
 
-
-        public void SetNumberTurn(uint textPlace, string s)
+        public void SetNumberTurn(int textPlace, string s)
         {
             if (textTurns[textPlace] != null)
             {
@@ -20,15 +19,15 @@ namespace Game
             }
         }
 
-        internal void SetTotal(int v)
-        {
-            if (_isLastResult)
-            {
-                textTurns[3].text = v.ToString();
-                return;
-            }
+        //internal void SetTotal(int v)
+        //{
+        //    if (_isLastResult)
+        //    {
+        //        textTurns[3].text = v.ToString();
+        //        return;
+        //    }
 
-            textTurns[2].text = v.ToString();
-        }
+        //    textTurns[2].text = v.ToString();
+        //}
     }
 }

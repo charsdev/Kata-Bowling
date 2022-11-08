@@ -1,108 +1,117 @@
-using System;
-using UnityEngine;
-
 namespace Game
 {
     public class GameModel
     {
-        private const uint TotalTurns = 10;
-        private const uint MaxPines = 10;
+        private const uint TotalRounds = 10;
+        private const int MaxPines = 10;
+
         private const string StrikeMark = "X";
         private const string SpareMark = "/";
         private const string GutterMark = "-";
 
-        private uint _leftPines = MaxPines;
-        private uint _rollIndex = 1;//turno
-        private uint _roundIndex = 1;
+        public int[] RollsResult { get; } = new int[21];
+        private int _currentRoll = 0;
+        private int _currentRound = 0;
 
-        private uint _lastScore;
-        private bool _isLastTurn;
+        private int _lastScore;
 
-        
-        public uint LeftPines { get => _leftPines; set => _leftPines = value; }
-        public bool IsLastTurn { get => _isLastTurn; set => _isLastTurn = value; }
+        public int LeftPines { get; set; } = MaxPines;
+        public bool IsLastTurn { get; set; }
 
-        public string GetScoreMark(uint score, uint rollIndex)
+
+        public string GetScoreMark(int rollIndex)
         {
-
-            
-            if (IsStrike(rollIndex, score))
+            if (IsStrike(rollIndex))
             {
                 return StrikeMark;
             }
-            else if (IsSpare(rollIndex, score))
+            else if (IsSpare(rollIndex))
             {
                 return SpareMark;
             }
-            else if (IsGutter(score))
+            else if (IsGutter(rollIndex))
             {
                 return GutterMark;
             }
             else
             {
-                return score.ToString();
+                return RollsResult[rollIndex].ToString();
             }
+        }
+
+        public void SaveResult(int rollIndex, int result)
+        {
+            RollsResult[rollIndex] = result;
         }
 
         public void NextRound()
         {
-            _roundIndex++;
-            _rollIndex = 1;
-            _leftPines = MaxPines;
-            _lastScore = 0;
+             _currentRound++;
+             LeftPines = MaxPines;
         }
 
-        public uint GetPinesByTurn(uint turn) => turn > 1 ? _leftPines : MaxPines;
+        public int GetPines() => LeftPines;
 
-        public void CheckScore(uint currentRound, uint rollResult)
+        public void HandleTurn(int currentRollIndex, int rollResult)
         {
-            if (CheckLastTurn(currentRound))
+            //if (CheckLastTurn(currentRound))
+            //{
+            //    CheckScoreLastTurn(rollResult);
+            //    return;
+            //}
+
+            if (IsLastRound(currentRollIndex))
             {
-                CheckScoreLastTurn(rollResult);
-                return;
+                UnityEngine.Debug.Log("Last");
             }
 
 
-
-            if ( IsStrike(currentRound, rollResult) || GetRollIndex() == 2)
+            if (currentRollIndex % 2 == 0) //first roll
             {
-                NextRound();
+                if (IsStrike(currentRollIndex))
+                {
+                    NextRound();
+                }
+                else
+                {
+                    CleanPines(rollResult);
+                    NextRoll();
+                }
             }
-            else
+            else  //second roll  
             {
                 CleanPines(rollResult);
+                NextRound();
                 NextRoll();
             }
         }
 
 
-        public void CheckScoreLastTurn(uint rr)
+        public void CheckScoreLastTurn(int rollResult)
         {
-            if (_rollIndex != 2 )
-            {
-                if (IsStrike(1, rr))
-                {
-                    _rollIndex = 1;
-                    _leftPines = MaxPines;
-                    _lastScore = 99;
-                }
-                else
-                {
-                    _lastScore = rr;
-                    NextRoll();
-                }
+            //if (_currentRoll != 2 )
+            //{
+            //    if (IsStrike(1, rr))
+            //    {
+            //        _currentRoll = 1;
+            //        _leftPines = MaxPines;
+            //        _lastScore = 99;
+            //    }
+            //    else
+            //    {
+            //        _lastScore = rr;
+            //        NextRoll();
+            //    }
 
-                if (_rollIndex == 3)
-                {
-                    NextRound();
-                }
-            }
-            else 
-            {
-            }
+            //    if (_currentRoll == 3)
+            //    {
+            //        NextRound();
+            //    }
+            //}
+            //else 
+            //{
+            //}
         }
-
-
 
         public int HandleTotalResult(string mark)
         {
@@ -111,21 +120,33 @@ namespace Game
                 return 10;
             }
 
-            int total = 0;
             int result1 = mark == "-" ? 0 : int.Parse(mark);
-            total = result1 + (int)_lastScore;
-            _lastScore = (uint)result1;
-            return total;
+            //int total = result1 + _lastScore;
+            //_lastScore = result1;
+            //return total;
+            return 0;
         }
 
-        public bool IsStrike(uint turn, uint fallPines) => fallPines == MaxPines && (turn == 1 || _isLastTurn);
-        public bool IsSpare(uint turn, uint fallPines) => fallPines == _leftPines && (turn > 1 || _isLastTurn);
-        public bool IsGutter(uint fallPines) => fallPines < 1;
-        public bool CheckLastTurn(uint turn) => turn == TotalTurns;
-        public void CleanPines(uint amount) => _leftPines -= amount;
-        public bool IsEndGame() => _roundIndex > TotalTurns;
-        public void NextRoll() => _rollIndex++;
-        public uint GetCurrentRound() => _roundIndex;
-        public uint GetRollIndex() => _rollIndex;
+        #region Check Score
+        public bool IsStrike(int rollIndex) => RollsResult[rollIndex] == MaxPines;
+        public bool IsSpare(int rollIndex)
+        {
+            return RollsResult[rollIndex] == LeftPines;
+        }
+
+        public bool IsGutter(int rollIndex) => RollsResult[rollIndex] == 0;
+        #endregion Check Score
+
+        public bool IsLastRound(int roundIndex) => roundIndex == TotalRounds - 1 || IsLastTurn;
+
+        public void CleanPines(int amount) => LeftPines -= amount;
+
+        public bool IsEndGame() => _currentRound > TotalRounds - 1;
+
+        public void NextRoll() => _currentRoll++;
+
+        public int GetCurrentRound() => _currentRound;
+
+        public int GetRollIndex() => _currentRoll;
     }
 }
