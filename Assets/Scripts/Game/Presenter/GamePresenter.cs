@@ -30,6 +30,45 @@ namespace Game
                 {
                     button.interactable = false;
                 }
+
+                int sum = 0;
+                int pairs = 0;
+
+                for (int i = 0; i < _model.GetTotalRounds - 1; i++)
+                {
+                    if (_model.IsStrike(pairs))
+                    {
+                        //if (_model.IsStrike(pairs + 2))
+                        //{
+                        //    // sum += 10 + _model.RollsResult[pairs + 2] + _model.RollsResult[pairs + 4];
+                        //}
+                        //else
+                        //{
+                        //    sum += 10 + _model.RollsResult[pairs + 2] + _model.RollsResult[pairs + 3];
+                        //}
+                        sum += 10 + _model.RollsResult[pairs + 2] + _model.RollsResult[pairs + 3];
+                        pairs++;
+                        pairs++;
+                    }
+                    else if (_model.RollsResult[pairs] + _model.RollsResult[pairs + 1] == 10)
+                    {
+                        sum += 10 + _model.RollsResult[pairs + 2];
+                        pairs += 2;
+                    }
+                    else
+                    {
+                        sum += (_model.RollsResult[pairs] + _model.RollsResult[pairs + 1]);
+                        pairs += 2;
+                    }
+
+                    _view.UpdateScoreBoard(i, 2, sum.ToString());
+                    //pairs += 2;
+                }
+
+                sum += _model.RollsResult[18] + _model.RollsResult[19] + _model.RollsResult[20];
+                _view.UpdateScoreBoard(_model.GetTotalRounds - 1, 3, sum.ToString());
+
+                _view.SeeEndSign(sum);
                 return;
             }
 
@@ -45,14 +84,21 @@ namespace Game
             var rollResult = GetRandomFallPines(turnPines);
 
             _model.SaveResult(currentRollIndex, rollResult);
-            
+
             var currentMark = _model.GetScoreMark(currentRollIndex);
             var currentRound = _model.GetCurrentRound();
-            Debug.Log($"{currentRound} {currentRollIndex}");
 
             //_view.UpdateTotalScore(currentRound, _model.HandleTotalResult(currentMark));
 
             _model.HandleTurn(currentRollIndex, rollResult);
+
+            if (_model.IsLastRound(currentRound))
+            {
+                Debug.Log($"{currentRound} {currentRollIndex}");
+                _view.UpdateScoreBoard(currentRound, currentRollIndex - 18, currentMark);
+                return;
+            }
+
             _view.UpdateScoreBoard(currentRound, currentRollIndex % 2, currentMark);
         }
     }
