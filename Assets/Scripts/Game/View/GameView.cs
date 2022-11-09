@@ -9,6 +9,9 @@ namespace Game
         [SerializeField] private Button _buttonThrow;
         [SerializeField] private TurnResult[] _turnResultsUI;
         [SerializeField] private Ball _ball;
+        [SerializeField] private CameraFilterFXGlitch _filter;
+        [SerializeField] private Frame _frame;
+
         private GamePresenter _presenter;
 
         private void Awake()
@@ -27,9 +30,19 @@ namespace Game
             return _buttonThrow;
         }
 
+        internal Frame GetFrame()
+        {
+            return _frame;
+        }
+
         internal Ball GetBall()
         {
             return _ball;
+        }
+
+        internal CameraFilterFXGlitch GetFilter()
+        {
+            return _filter;
         }
 
         internal void UpdateTotalScore(int currentTurn, int v)

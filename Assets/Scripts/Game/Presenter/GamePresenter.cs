@@ -20,22 +20,29 @@ namespace Game
 
         public void Throw()
         {
-            //if (_model.IsEndGame())
-            //{
-            //    var button = _view.GetButton();
-            //    if (button.interactable)
-            //    {
-            //        button.interactable = false;
-            //    }
-            //    return;
-            //}
+            var filter = _view.GetFilter();
+            filter.ExecuteGlitch();
 
-            //var ball = _view.GetBall();
-            //ball.Launch();
+            if (_model.IsEndGame())
+            {
+                var button = _view.GetButton();
+                if (button.interactable)
+                {
+                    button.interactable = false;
+                }
+                return;
+            }
+
+            var frame = _view.GetFrame();
+            frame.Reset();
+
+            var ball = _view.GetBall();
+            ball.Reset();
+            ball.Launch();
 
             var currentRollIndex = _model.GetRollIndex();
             var turnPines = _model.GetPines();
-            var rollResult = currentRollIndex % 2 == 0 ? 4 : 6;//GetRandomFallPines(turnPines);
+            var rollResult = GetRandomFallPines(turnPines);
 
             _model.SaveResult(currentRollIndex, rollResult);
             
