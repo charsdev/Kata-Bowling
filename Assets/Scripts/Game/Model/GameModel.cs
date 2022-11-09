@@ -10,6 +10,7 @@ namespace Game
         private const string GutterMark = "-";
 
         public int[] RollsResult { get; } = new int[21];
+
         private int _currentRoll = 0;
         private int _currentRound = 0;
 
@@ -129,10 +130,8 @@ namespace Game
 
         #region Check Score
         public bool IsStrike(int rollIndex) => RollsResult[rollIndex] == MaxPines;
-        public bool IsSpare(int rollIndex)
-        {
-            return RollsResult[rollIndex] == LeftPines;
-        }
+
+        public bool IsSpare(int rollIndex) => RollsResult[rollIndex] == LeftPines;
 
         public bool IsGutter(int rollIndex) => RollsResult[rollIndex] == 0;
         #endregion Check Score
