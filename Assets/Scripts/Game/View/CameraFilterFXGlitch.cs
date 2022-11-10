@@ -13,6 +13,7 @@ namespace Game
         [SerializeField] private float _maxGlitch = 1.0f;
         private float _glitch;
         [SerializeField] private float _glitchTime;
+        private bool _canGlitch;
         #endregion
 
         #region Properties
@@ -34,14 +35,16 @@ namespace Game
 
         private IEnumerator GlitchCoroutine()
         {
+            _canGlitch = true;
             _glitch = _maxGlitch;
             yield return new WaitForSeconds(_glitchTime);
             _glitch = 0;
+            _canGlitch = false;
         }
 
         private void OnRenderImage(RenderTexture sourceTexture, RenderTexture destTexture)
         {
-            if (_shader != null)
+            if (_shader != null && _canGlitch)
             {
                 _timeX += Time.deltaTime;
 

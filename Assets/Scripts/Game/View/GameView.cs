@@ -1,17 +1,20 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Game
 {
     public class GameView : MonoBehaviour
     {
         [SerializeField] private Button _buttonThrow;
-        [SerializeField] private TMPro.TextMeshProUGUI _signEnd;
+        [SerializeField] private TextMeshProUGUI _signEnd;
         [SerializeField] private TurnResult[] _turnResultsUI;
         [SerializeField] private Ball _ball;
         [SerializeField] private CameraFilterFXGlitch _filter;
+        [SerializeField] private CameraFollow _cameraFollow;
         [SerializeField] private Frame _frame;
+
+        public TextMeshProUGUI[] feedbackText;
 
         private GamePresenter _presenter;
 
@@ -26,35 +29,21 @@ namespace Game
             _turnResultsUI[currentTurn].SetNumberTurn(indexPos, print);
         }
 
-        internal Button GetButton()
-        {
-            return _buttonThrow;
-        }
+        internal Button GetButton() => _buttonThrow;
 
-        internal Frame GetFrame()
-        {
-            return _frame;
-        }
+        internal Frame GetFrame() => _frame;
 
-        internal Ball GetBall()
-        {
-            return _ball;
-        }
+        internal Ball GetBall() => _ball;
 
-        internal CameraFilterFXGlitch GetFilter()
-        {
-            return _filter;
-        }
+        internal CameraFilterFXGlitch GetFilter() => _filter;
 
-        internal void UpdateTotalScore(int currentTurn, int v)
-        {
-          //  _turnResultsUI[currentTurn].SetTotal(v);
-        }
+        internal CameraFollow GetCameraFollow() => _cameraFollow;
 
         public void SeeEndSign(int amount)
         {
-            _signEnd.text = $"AWESOME! YOU'RE SCORED <color=#FF0000>{amount}</color> POINTS!";
+            _signEnd.text = $"AWESOME! YOUR SCORE IS <color=#FF0000>{amount}</color> POINTS!";
             _signEnd.gameObject.SetActive(true);
         }
+
     }
 }
