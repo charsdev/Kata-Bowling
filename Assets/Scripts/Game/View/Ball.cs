@@ -18,6 +18,7 @@ namespace Game
         public void Launch()
         {
             _rigidBody.useGravity = true;
+            Power = Random.Range(60, 80);
             _rigidBody.velocity = Vector3.forward * Power;
         }
 

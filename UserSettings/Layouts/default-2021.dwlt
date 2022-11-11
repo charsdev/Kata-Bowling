@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43
+    x: -215
+    y: 213
     width: 1920
     height: 1007
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 1
+  m_Maximized: 0
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 58
+  controlID: 41
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,12 +139,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1391
+    width: 1387
     height: 957
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 34
+  controlID: 42
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,12 +165,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1391
-    height: 513
+    width: 1387
+    height: 705
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 35
+  controlID: 43
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -188,10 +188,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 333
-    height: 513
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 319
+    height: 705
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -212,12 +212,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 333
+    x: 319
     y: 0
-    width: 405
-    height: 513
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 200
+    height: 705
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -238,12 +238,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 738
+    x: 519
     y: 0
-    width: 653
-    height: 513
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 868
+    height: 705
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -259,23 +259,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 513
-    width: 1391
-    height: 444
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 16}
+    y: 705
+    width: 1387
+    height: 252
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -291,12 +291,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1391
+    x: 1387
     y: 0
-    width: 529
+    width: 533
     height: 957
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -323,10 +323,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 738
-    y: 73
-    width: 651
-    height: 492
+    x: 304
+    y: 243
+    width: 866
+    height: 684
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 265, y: 471}
+  m_TargetSize: {x: 373, y: 663}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -352,10 +352,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -132.5
-    m_HBaseRangeMax: 132.5
-    m_VBaseRangeMin: -235.5
-    m_VBaseRangeMax: 235.5
+    m_HBaseRangeMin: -186.5
+    m_HBaseRangeMax: 186.5
+    m_VBaseRangeMin: -331.5
+    m_VBaseRangeMax: 331.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -373,23 +373,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 651
-      height: 471
+      width: 866
+      height: 663
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 325.5, y: 235.5}
+    m_Translation: {x: 433, y: 331.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -325.5
-      y: -235.5
-      width: 651
-      height: 471
+      x: -433
+      y: -331.5
+      width: 866
+      height: 663
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 651, y: 492}
+  m_LastWindowPixelSize: {x: 866, y: 684}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73
-    width: 332
-    height: 492
+    y: 19
+    width: 318
+    height: 684
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -426,23 +426,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a6630000
-      m_LastClickedID: 25510
-      m_ExpandedIDs: fefaffffc861000070620000a663000000640000
+      m_SelectedIDs: b8940100
+      m_LastClickedID: 103608
+      m_ExpandedIDs: 6a53feffc853feff2060fefff661feffe27afeff727efeff0085feff6086feff168afeffec8bfeffe8acfeff86b3feffd4b6feff24bafeffeabbfeff72c2feff3cc4feff36cbfeffdedafefffefaffff7e6200008a640000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Ingame
-        m_OriginalName: Ingame
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 25200
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -472,10 +472,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 333
-    y: 73
-    width: 403
-    height: 492
+    x: 104
+    y: 243
+    width: 198
+    height: 684
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -551,9 +551,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 67.5, y: 86}
+      snapOffset: {x: -99, y: 86}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 1
       id: Orientation
       index: 0
       layout: 4
@@ -732,9 +732,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: -4.2900085, z: -13.14}
+    m_Target: {x: -3.1685467, y: -10.781185, z: -2.5362625}
     speed: 2
-    m_Value: {x: 0, y: -4.2900085, z: -13.14}
+    m_Value: {x: -3.1685467, y: -10.781185, z: -2.5362625}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -781,13 +781,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.35566345, y: 0.3514508, z: -0.14644548, w: -0.8535476}
+    m_Target: {x: -0.43058878, y: 0.08561191, z: -0.041071218, w: -0.8975429}
     speed: 2
-    m_Value: {x: -0.35566276, y: 0.35145015, z: -0.1464452, w: -0.85354596}
+    m_Value: {x: -0.43058744, y: 0.08561164, z: -0.04107109, w: -0.8975401}
   m_Size:
-    m_Target: 8.079232
+    m_Target: 24.465136
     speed: 2
-    m_Value: 8.079232
+    m_Value: 24.465136
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -833,9 +833,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 586
-    width: 1390
-    height: 423
+    y: 778
+    width: 1385
+    height: 231
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -853,22 +853,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Game/View
+    - Assets/Fonts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Game/View
+  - Assets/Fonts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Unity Projects\Kata Bowling
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3c670000
-    m_LastClickedID: 26428
-    m_ExpandedIDs: 00000000fa660000fc660000fe66000000670000026700000467000006670000086700000a6700000c6700000e67000010670000426700004667000000ca9a3b
+    scrollPos: {x: 0, y: 61}
+    m_SelectedIDs: 38670000
+    m_LastClickedID: 26424
+    m_ExpandedIDs: 00000000086700000a6700000c6700000e67000010670000126700001467000016670000186700001a6700001c6700001e67000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -896,7 +896,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fa660000fc660000fe66000000670000026700000467000006670000086700000a6700000c6700000e67000010670000
+    m_ExpandedIDs: 00000000086700000a6700000c6700000e67000010670000126700001467000016670000186700001a6700001c6700001e670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -921,9 +921,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: b8940100
+    m_LastClickedInstanceID: 103608
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000d8c3010000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -973,9 +973,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 586
-    width: 1150
-    height: 423
+    y: 724
+    width: 1386
+    height: 231
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1000,9 +1000,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1391
-    y: 73
-    width: 528
+    x: 1388
+    y: 19
+    width: 532
     height: 936
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1015,7 +1015,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 75
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -1041,21 +1041,21 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1149
-    y: 81
-    width: 762
-    height: 950
+    x: 1386
+    y: 73
+    width: 533
+    height: 936
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 28945
+    ID: 12490
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
-    - 660
-    - 220
+    - 649
+    - 217
     relativeSizes:
     - 0.75
     - 0.25
@@ -1065,7 +1065,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 880
+    lastTotalSize: 866
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -1200,7 +1200,7 @@ MonoBehaviour:
       name: Kata Bowling
       fullName: Kata Bowling
       resultStatus: 1
-      duration: 0.0964045
+      duration: 0.0961442
       messages: 
       output: 
       stacktrace: 
@@ -1216,7 +1216,7 @@ MonoBehaviour:
       name: EditMode.dll
       fullName: E:/Unity Projects/Kata Bowling/Library/ScriptAssemblies/EditMode.dll
       resultStatus: 1
-      duration: 0.0675172
+      duration: 0.0617051
       messages: 
       output: 
       stacktrace: 
@@ -1232,7 +1232,7 @@ MonoBehaviour:
       name: EditMode
       fullName: EditMode
       resultStatus: 1
-      duration: 0.0654068
+      duration: 0.0548902
       messages: 
       output: 
       stacktrace: 
@@ -1243,12 +1243,331 @@ MonoBehaviour:
       categories: []
       parentId: 1004
       parentUniqueId: '[EditMode][E:/Unity Projects/Kata Bowling/Library/ScriptAssemblies/EditMode.dll][suite]'
+    - id: 1017
+      uniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsGutter][suite]
+      name: CheckIfIsGutter
+      fullName: EditMode.CheckIfIsGutter
+      resultStatus: 1
+      duration: 0.0434075
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1001
+      parentUniqueId: EditMode.dll/[EditMode][suite]
+    - id: 1012
+      uniqueId: EditMode.dll/EditMode/CheckIfIsGutter/[EditMode][EditMode.CheckIfIsGutter(0,10)]
+      name: CheckIfIsGutter(0,10)
+      fullName: EditMode.CheckIfIsGutter(0,10)
+      resultStatus: 1
+      duration: 0.0243179
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1017
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsGutter][suite]
+    - id: 1013
+      uniqueId: EditMode.dll/EditMode/CheckIfIsGutter/[EditMode][EditMode.CheckIfIsGutter(1,10)]
+      name: CheckIfIsGutter(1,10)
+      fullName: EditMode.CheckIfIsGutter(1,10)
+      resultStatus: 1
+      duration: 0.0002068
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1017
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsGutter][suite]
+    - id: 1014
+      uniqueId: EditMode.dll/EditMode/CheckIfIsGutter/[EditMode][EditMode.CheckIfIsGutter(2,3)]
+      name: CheckIfIsGutter(2,3)
+      fullName: EditMode.CheckIfIsGutter(2,3)
+      resultStatus: 1
+      duration: 0.0001484
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1017
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsGutter][suite]
+    - id: 1015
+      uniqueId: EditMode.dll/EditMode/CheckIfIsGutter/[EditMode][EditMode.CheckIfIsGutter(2,0)]
+      name: CheckIfIsGutter(2,0)
+      fullName: EditMode.CheckIfIsGutter(2,0)
+      resultStatus: 1
+      duration: 0.0001175
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1017
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsGutter][suite]
+    - id: 1016
+      uniqueId: EditMode.dll/EditMode/CheckIfIsGutter/[EditMode][EditMode.CheckIfIsGutter(3,0)]
+      name: CheckIfIsGutter(3,0)
+      fullName: EditMode.CheckIfIsGutter(3,0)
+      resultStatus: 1
+      duration: 0.0001157
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1017
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsGutter][suite]
+    - id: 1023
+      uniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsSpare][suite]
+      name: CheckIfIsSpare
+      fullName: EditMode.CheckIfIsSpare
+      resultStatus: 1
+      duration: 0.0519985
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1001
+      parentUniqueId: EditMode.dll/[EditMode][suite]
+    - id: 1020
+      uniqueId: EditMode.dll/EditMode/CheckIfIsSpare/[EditMode][EditMode.CheckIfIsSpare(2,3)]
+      name: CheckIfIsSpare(2,3)
+      fullName: EditMode.CheckIfIsSpare(2,3)
+      resultStatus: 1
+      duration: 0.0321957
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1023
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsSpare][suite]
+    - id: 1019
+      uniqueId: EditMode.dll/EditMode/CheckIfIsSpare/[EditMode][EditMode.CheckIfIsSpare(9,1)]
+      name: CheckIfIsSpare(9,1)
+      fullName: EditMode.CheckIfIsSpare(9,1)
+      resultStatus: 1
+      duration: 0.0002669
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1023
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsSpare][suite]
+    - id: 1020
+      uniqueId: EditMode.dll/EditMode/CheckIfIsSpare/[EditMode][EditMode.CheckIfIsSpare(0,10)]
+      name: CheckIfIsSpare(0,10)
+      fullName: EditMode.CheckIfIsSpare(0,10)
+      resultStatus: 1
+      duration: 0.0001709
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1023
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsSpare][suite]
+    - id: 1021
+      uniqueId: EditMode.dll/EditMode/CheckIfIsSpare/[EditMode][EditMode.CheckIfIsSpare(5,5)]
+      name: CheckIfIsSpare(5,5)
+      fullName: EditMode.CheckIfIsSpare(5,5)
+      resultStatus: 1
+      duration: 0.0001249
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1023
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsSpare][suite]
+    - id: 1011
+      uniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsStrike][suite]
+      name: CheckIfIsStrike
+      fullName: EditMode.CheckIfIsStrike
+      resultStatus: 1
+      duration: 0.0047942
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1001
+      parentUniqueId: EditMode.dll/[EditMode][suite]
+    - id: 1006
+      uniqueId: EditMode.dll/EditMode/CheckIfIsStrike/[EditMode][EditMode.CheckIfIsStrike(0,10)]
+      name: CheckIfIsStrike(0,10)
+      fullName: EditMode.CheckIfIsStrike(0,10)
+      resultStatus: 1
+      duration: 0.0002597
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1011
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsStrike][suite]
+    - id: 1006
+      uniqueId: EditMode.dll/EditMode/CheckIfIsStrike/[EditMode][EditMode.CheckIfIsStrike(1,10)]
+      name: CheckIfIsStrike(1,10)
+      fullName: EditMode.CheckIfIsStrike(1,10)
+      resultStatus: 1
+      duration: 0.0001477
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1011
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsStrike][suite]
+    - id: 1009
+      uniqueId: EditMode.dll/EditMode/CheckIfIsStrike/[EditMode][EditMode.CheckIfIsStrike(2,3)]
+      name: CheckIfIsStrike(2,3)
+      fullName: EditMode.CheckIfIsStrike(2,3)
+      resultStatus: 1
+      duration: 0.0001144
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1011
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsStrike][suite]
+    - id: 1009
+      uniqueId: EditMode.dll/EditMode/CheckIfIsStrike/[EditMode][EditMode.CheckIfIsStrike(2,8)]
+      name: CheckIfIsStrike(2,8)
+      fullName: EditMode.CheckIfIsStrike(2,8)
+      resultStatus: 1
+      duration: 0.0001109
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1011
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsStrike][suite]
+    - id: 1010
+      uniqueId: EditMode.dll/EditMode/CheckIfIsStrike/[EditMode][EditMode.CheckIfIsStrike(3,10)]
+      name: CheckIfIsStrike(3,10)
+      fullName: EditMode.CheckIfIsStrike(3,10)
+      resultStatus: 1
+      duration: 0.0001107
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1011
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.CheckIfIsStrike][suite]
+    - id: 1005
+      uniqueId: EditMode.dll/EditMode/[EditMode][EditMode.GivenAScore_ReturnSpareMark]
+      name: GivenAScore_ReturnSpareMark
+      fullName: EditMode.GivenAScore_ReturnSpareMark
+      resultStatus: 1
+      duration: 0.0196884
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: EditMode.dll/[EditMode][suite]
+    - id: 1004
+      uniqueId: EditMode.dll/EditMode/[EditMode][EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark][suite]
+      name: GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark
+      fullName: EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark
+      resultStatus: 1
+      duration: 0.0330184
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1001
+      parentUniqueId: EditMode.dll/[EditMode][suite]
     - id: 1002
-      uniqueId: EditMode.dll/EditMode/[EditMode][EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeMark]
-      name: GivenAScore_WhenIsFirstRoll_ReturnStrikeMark
-      fullName: EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeMark
+      uniqueId: EditMode.dll/EditMode/GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark/[EditMode][EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark(1,10)]
+      name: GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark(1,10)
+      fullName: EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark(1,10)
       resultStatus: 1
-      duration: 0.0023462
+      duration: 0.0187196
       messages: 
       output: 
       stacktrace: 
@@ -1258,14 +1577,14 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
-      parentUniqueId: EditMode.dll/[EditMode][suite]
+      parentId: 1004
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark][suite]
     - id: 1003
-      uniqueId: EditMode.dll/EditMode/[EditMode][EditMode.GivenAScore_WhenIsSecondRoll_ReturnSpareMark]
-      name: GivenAScore_WhenIsSecondRoll_ReturnSpareMark
-      fullName: EditMode.GivenAScore_WhenIsSecondRoll_ReturnSpareMark
+      uniqueId: EditMode.dll/EditMode/GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark/[EditMode][EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark(5,0)]
+      name: GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark(5,0)
+      fullName: EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark(5,0)
       resultStatus: 1
-      duration: 0.0397083
+      duration: 0.0003244
       messages: 
       output: 
       stacktrace: 
@@ -1275,15 +1594,15 @@ MonoBehaviour:
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1001
-      parentUniqueId: EditMode.dll/[EditMode][suite]
-    m_ResultText: GivenAScore_WhenIsSecondRoll_ReturnSpareMark (0.040s)
+      parentId: 1004
+      parentUniqueId: EditMode.dll/EditMode/[EditMode][EditMode.GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark][suite]
+    m_ResultText: CheckIfIsSpare (0.052s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 777d97b9
-      m_LastClickedID: -1181254281
-      m_ExpandedIDs: 4802f68281b42e8e7a1ae9913f379aa850830d24a8fc3b2c22524b3a8b43664b1af30c75b86f387dffffff7f
+      m_SelectedIDs: 78ac787e
+      m_LastClickedID: 2121837688
+      m_ExpandedIDs: 4802f682d235f78581b42e8e7a1ae9917b2f87a53f379aa8d01d44d89187c4e350830d24a8fc3b2c22524b3a8b43664b1af30c75b86f387d78ac787effffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

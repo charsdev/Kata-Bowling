@@ -4,7 +4,6 @@ using NUnit.Framework;
 public class EditMode
 {
     private GameModel _gameModel;
-    private GamePresenter _gamePresenter;
 
     [SetUp]
     public void Setup()

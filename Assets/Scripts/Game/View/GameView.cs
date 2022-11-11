@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 namespace Game
 {
@@ -10,18 +11,22 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _signEnd;
         [SerializeField] private TurnResult[] _turnResultsUI;
         [SerializeField] private Ball _ball;
-        [SerializeField] private CameraFilterFXGlitch _filter;
+        [SerializeField] private Frame frame;
         [SerializeField] private CameraFollow _cameraFollow;
-        [SerializeField] private Frame _frame;
 
         public TextMeshProUGUI[] feedbackText;
 
         private GamePresenter _presenter;
 
+        public Frame GetFrame()
+        {
+            return frame;
+        }
+
         private void Awake()
         {
             _presenter = new GamePresenter(this);
-            _buttonThrow.onClick.AddListener(_presenter.Throw);
+            _buttonThrow.onClick.AddListener(() => _presenter.Throw());
         }
 
         public void UpdateScoreBoard(int currentTurn, int indexPos, string print)
@@ -29,13 +34,10 @@ namespace Game
             _turnResultsUI[currentTurn].SetNumberTurn(indexPos, print);
         }
 
+
         internal Button GetButton() => _buttonThrow;
 
-        internal Frame GetFrame() => _frame;
-
         internal Ball GetBall() => _ball;
-
-        internal CameraFilterFXGlitch GetFilter() => _filter;
 
         internal CameraFollow GetCameraFollow() => _cameraFollow;
 

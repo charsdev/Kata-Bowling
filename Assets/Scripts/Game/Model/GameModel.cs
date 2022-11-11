@@ -10,14 +10,14 @@ namespace Game
         public const int ExtraTurns = 1;
         public const int TotalRolls = (TotalRounds * RollsPerRound) + ExtraTurns;
 
-        private const string StrikeMark = "X";
-        private const string SpareMark = "/";
-        private const string GutterMark = "-";
+        public const string StrikeMark = "X";
+        public const string SpareMark = "/";
+        public const string GutterMark = "-";
 
         public int[] RollsResult { get; } = new int[TotalRolls];
         public int RollIndex { get; private set; }
         public int RoundIndex { get; private set; }
-        public int LeftPines { get; set; } = MaxPines;
+        public int LeftPines { get; private set; } = MaxPines;
 
         public string GetScoreMark(int rollIndex)
         {
@@ -39,13 +39,11 @@ namespace Game
             }
         }
 
-        public void NextRound()
+        private void NextRound()
         {
             RoundIndex++;
             ResetPines();
         }
-
-        public int GetPines() => LeftPines;
 
         public void HandleTurn(int currentRollIndex, int rollResult)
         {
@@ -55,7 +53,7 @@ namespace Game
                 return;
             }
 
-            if (currentRollIndex % 2 == 0) //first roll
+            if (IsFirstRoll(currentRollIndex))
             {
                 if (IsStrike(currentRollIndex))
                 {
@@ -145,27 +143,18 @@ namespace Game
             return scores;
         }
 
-
         #region Check Score
         public bool IsStrike(int rollIndex) => RollsResult[rollIndex] == MaxPines;
-
         public bool IsSpare(int rollIndex) => RollsResult[rollIndex] == LeftPines;
-
         public bool IsGutter(int rollIndex) => RollsResult[rollIndex] == 0;
         #endregion Check Score
 
         public bool IsLastRound(int roundIndex) => roundIndex == TotalRounds - 1;
-
         public void CleanPines(int amount) => LeftPines -= amount;
-
         private void ResetPines() => LeftPines = MaxPines;
-
         public bool IsEndGame() => RoundIndex >= TotalRounds;
-
         private void NextRoll() => RollIndex++;
-
-        public int GetTotalScore() => RollsResult.Sum();
-
         public void SaveResult(int rollIndex, int result) => RollsResult[rollIndex] = result;
+        public bool IsFirstRoll(int currentRollIndex) => currentRollIndex % 2 == 0;
     }
 }

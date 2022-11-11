@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
@@ -11,6 +13,9 @@ namespace Game
         {
             _view = view;
             _model = new GameModel();
+           
+            var camera = _view.GetCameraFollow();
+            camera.OnFinishFollow.AddListener(HideFeeback);
         }
 
         private int GetRandomFallPines(int max) => Random.Range(0, max + 1);
@@ -39,26 +44,86 @@ namespace Game
                 return;
             }
 
-            #region effects
-            var cameraFollow = _view.GetCameraFollow();
-            cameraFollow.ResetCamera();
+            #region Effects
+            var ball = _view.GetBall();
+            ball.Launch();
 
-            var filter = _view.GetFilter();
-            filter.ExecuteGlitch();
+            var cameraFollow = _view.GetCameraFollow();
+            cameraFollow.Follow();
 
             var frame = _view.GetFrame();
             frame.Reset();
+            #endregion
 
-            var ball = _view.GetBall();
-            ball.Reset();
-            ball.Launch();
-            #endregion effects
-
-            //Throw pines
+            #region Pines result
             var currentRollIndex = _model.RollIndex;
-            var turnPines = _model.GetPines();
+            var turnPines = _model.LeftPines;
             var rollResult = GetRandomFallPines(turnPines);
+
             _model.SaveResult(currentRollIndex, rollResult);
+            #endregion
+
+            #region Mark
+            var currentMark = _model.GetScoreMark(currentRollIndex);
+            ShowFeedBackByMark(currentMark);
+            #endregion
+
+            #region Handle next turn
+            var currentRound = _model.RoundIndex;
+            _model.HandleTurn(currentRollIndex, rollResult);
+            #endregion
+
+            #region Handle Score board
+            var lastTurnIndex = currentRollIndex - (GameModel.TotalRolls - 3);
+            var pairTurn = currentRollIndex % 2;
+            var turn = _model.IsLastRound(currentRound) ? lastTurnIndex : pairTurn;
+            _view.UpdateScoreBoard(currentRound, turn, currentMark); 
+            #endregion
+        }
+
+        public void ShowFeedBackByMark(string scoreMark)
+        {
+            //TODO change
+            if (scoreMark == GameModel.StrikeMark)
+            {
+                _view.feedbackText[0].gameObject.SetActive(true);
+            }
+            else if(scoreMark == GameModel.SpareMark)
+            {
+                _view.feedbackText[1].gameObject.SetActive(true);
+            }
+            else if (scoreMark == GameModel.GutterMark)
+            {
+                _view.feedbackText[2].gameObject.SetActive(true);
+            }
+        }
+
+        public void HideFeeback()
+        {
+            _view.feedbackText[0].gameObject.SetActive(false);
+            _view.feedbackText[1].gameObject.SetActive(false);
+            _view.feedbackText[2].gameObject.SetActive(false);
+        }
+
+        public IEnumerator ThrowCoroutine()
+        {
+            _view.GetBall().Launch();
+
+            var cameraFollow = _view.GetCameraFollow();
+            cameraFollow.Follow();
+
+            var currentRollIndex = _model.RollIndex;
+
+            while (!cameraFollow.Finished)
+            {
+                yield return null;
+            }
+
+            var frame = _view.GetFrame();
+            var rollResult = frame.GetPinsFalled();
+            _model.SaveResult(currentRollIndex, rollResult);
+
+            //get the mark after handle the turn
             var currentMark = _model.GetScoreMark(currentRollIndex);
 
             //Handle next turn
@@ -66,8 +131,20 @@ namespace Game
             _model.HandleTurn(currentRollIndex, rollResult);
 
             //Handle score board
-            var turn = _model.IsLastRound(currentRound) ? currentRollIndex - (GameModel.TotalRolls - 3) : currentRollIndex % 2;
+            var lastTurnIndex = currentRollIndex - (GameModel.TotalRolls - 3);
+            var pairTurn = currentRollIndex % 2;
+
+            var turn = _model.IsLastRound(currentRound) ? lastTurnIndex : pairTurn;
             _view.UpdateScoreBoard(currentRound, turn, currentMark);
+
+            if (_model.IsFirstRoll(_model.RollIndex))
+            {
+                frame.Reset();
+            }
+            else
+            {
+                frame.HideFalledPins();
+            }
         }
 
         private void DisableThrowButton()
