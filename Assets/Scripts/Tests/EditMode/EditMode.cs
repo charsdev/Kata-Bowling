@@ -1,72 +1,66 @@
-//using Game;
-//using NUnit.Framework;
+using Game;
+using NUnit.Framework;
 
-//public class EditMode
-//{
-//    private GameModel _gameModel;
-//    private GamePresenter _gamePresenter;
+public class EditMode
+{
+    private GameModel _gameModel;
+    private GamePresenter _gamePresenter;
 
-//    [SetUp]
-//    public void Setup()
-//    {
-//        _gameModel = new GameModel();
-//    }
+    [SetUp]
+    public void Setup()
+    {
+        _gameModel = new GameModel();
+    }
 
-//    [Test]
-//    public void GivenAScore_WhenIsFirstRoll_ReturnStrikeMark()
-//    {
-//        uint score = 10;
-//        uint rollIndex = 1;
-//        var mark = _gameModel.GetScoreMark(score, rollIndex);
-//        Assert.AreEqual("X", mark);
-//    }
+    [TestCase(1, 10, ExpectedResult = "X")]
+    [TestCase(5, 0, ExpectedResult = "-")]
+    public string GivenAScore_WhenIsFirstRoll_ReturnStrikeOrGutterMark(int rollIndex, int score)
+    {
+        _gameModel.SaveResult(rollIndex, score);
+        return _gameModel.GetScoreMark(rollIndex);
+    }
 
-//    [Test]
-//    public void GivenAScore_WhenIsSecondRoll_ReturnSpareMark()
-//    {
-//        uint score = 10;
-//        uint rollIndex = 2;
-//        var mark = _gameModel.GetScoreMark(score, rollIndex);
-//        Assert.AreEqual("/", mark);
-//    }
+    [Test]
+    public void GivenAScore_ReturnSpareMark()
+    {
+        _gameModel.CleanPines(5);
+        _gameModel.SaveResult(1, 5);
+        Assert.AreEqual("/", _gameModel.GetScoreMark(1));
+    }
 
-//    [TestCase(1, 10, false, ExpectedResult = true)]
-//    [TestCase(2, 10, false, ExpectedResult = false)]
-//    [TestCase(1, 3, true, ExpectedResult = false)]
-//    [TestCase(2, 3, false, ExpectedResult = false)]
-//    [TestCase(3, 10, true, ExpectedResult = true)]
-//    public bool CheckIfIsStrike(int turn, int fallPines, bool lastTurn)
-//    {
-//        _gameModel.IsLastTurn = lastTurn;
-//        return _gameModel.IsStrike((uint)turn, (uint)fallPines);
-//    }
-
-//    [TestCase(10, ExpectedResult = false)]
-//    [TestCase(5, ExpectedResult = false)]
-//    [TestCase(3, ExpectedResult = false)]
-//    [TestCase(1, ExpectedResult = false)]
-//    [TestCase(0, ExpectedResult = true)]
-//    public bool CheckIfIsGutter(int fallPines)
-//    {
-//        return _gameModel.IsGutter((uint)fallPines);
-//    }
+    [TestCase(0, 10, ExpectedResult = true)]
+    [TestCase(1, 10, ExpectedResult = true)]
+    [TestCase(2, 3, ExpectedResult = false)]
+    [TestCase(2, 8, ExpectedResult = false)]
+    [TestCase(3, 10, ExpectedResult = true)]
+    public bool CheckIfIsStrike(int turn, int fallPines)
+    {
+        _gameModel.SaveResult(turn, fallPines);
+        return _gameModel.IsStrike(turn);
+    }
 
 
-//    [TestCase(1, 10, 10, false, ExpectedResult = false)]
-//    [TestCase(2, 10, 10 ,  false, ExpectedResult = true)]
-//    [TestCase(2, 8, 8,  false, ExpectedResult = true)]
-//    [TestCase(3, 9, 10,  false, ExpectedResult = false)]
-//    [TestCase(3, 8, 8,  true, ExpectedResult = true)]
-//    public bool CheckIfIsSpare(int turn, int fallPines, int leftPines, bool lastTurn)
-//    {
-//        _gameModel.LeftPines = (uint)leftPines;
-//        _gameModel.IsLastTurn = lastTurn;
-//        return _gameModel.IsSpare((uint)turn, (uint)fallPines);
-//    }
+    [TestCase(0, 10, ExpectedResult = false)]
+    [TestCase(1, 10, ExpectedResult = false)]
+    [TestCase(2, 3, ExpectedResult = false)]
+    [TestCase(2, 0, ExpectedResult = true)]
+    [TestCase(3, 0, ExpectedResult = true)]
+    public bool CheckIfIsGutter(int turn, int fallPines)
+    {
+        _gameModel.SaveResult(turn, fallPines);
+        return _gameModel.IsGutter(turn);
+    }
 
 
+    [TestCase(2, 3, ExpectedResult = false)]
+    [TestCase(9, 1, ExpectedResult = true)]
+    [TestCase(0, 10, ExpectedResult = true)]
+    [TestCase(5, 5, ExpectedResult = true)]
+    public bool CheckIfIsSpare(int fallPines, int leftPines)
+    {
+        _gameModel.CleanPines(leftPines);
+        _gameModel.SaveResult(1, fallPines);
+        return _gameModel.IsSpare(1);
+    }
 
-
-
-
-//}
+}

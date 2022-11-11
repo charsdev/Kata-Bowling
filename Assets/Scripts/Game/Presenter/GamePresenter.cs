@@ -55,14 +55,14 @@ namespace Game
             #endregion effects
 
             //Throw pines
-            var currentRollIndex = _model.GetRollIndex();
+            var currentRollIndex = _model.RollIndex;
             var turnPines = _model.GetPines();
             var rollResult = GetRandomFallPines(turnPines);
             _model.SaveResult(currentRollIndex, rollResult);
             var currentMark = _model.GetScoreMark(currentRollIndex);
 
             //Handle next turn
-            var currentRound = _model.GetCurrentRound();
+            var currentRound = _model.RoundIndex;
             _model.HandleTurn(currentRollIndex, rollResult);
 
             //Handle score board

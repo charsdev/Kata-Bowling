@@ -8,17 +8,15 @@ namespace Game
         public const int MaxPines = 10;
         public const int RollsPerRound = 2;
         public const int ExtraTurns = 1;
-        public const int TotalRolls = TotalRounds * RollsPerRound + ExtraTurns;
+        public const int TotalRolls = (TotalRounds * RollsPerRound) + ExtraTurns;
 
         private const string StrikeMark = "X";
         private const string SpareMark = "/";
         private const string GutterMark = "-";
 
         public int[] RollsResult { get; } = new int[TotalRolls];
-
-        private int _currentRoll;
-        private int _currentRound;
-
+        public int RollIndex { get; private set; }
+        public int RoundIndex { get; private set; }
         public int LeftPines { get; set; } = MaxPines;
 
         public string GetScoreMark(int rollIndex)
@@ -43,7 +41,7 @@ namespace Game
 
         public void NextRound()
         {
-            _currentRound++;
+            RoundIndex++;
             ResetPines();
         }
 
@@ -51,7 +49,7 @@ namespace Game
 
         public void HandleTurn(int currentRollIndex, int rollResult)
         {
-            if (IsLastRound(GetCurrentRound()))
+            if (IsLastRound(RoundIndex))
             {
                 HandleThirdTurn(rollResult);
                 return;
@@ -81,22 +79,22 @@ namespace Game
 
         private void HandleThirdTurn(int rollResult)
         {
-            if (_currentRoll == TotalRolls - 3)
+            if (RollIndex == TotalRolls - 3)
             {
-                LeftPines = IsStrike(_currentRoll) ? MaxPines : LeftPines - rollResult;
+                LeftPines = IsStrike(RollIndex) ? MaxPines : LeftPines - rollResult;
                 NextRoll();
             }
-            else if (_currentRoll == TotalRolls - 2)
+            else if (RollIndex == TotalRolls - 2)
             {
-                var lastRoll = _currentRoll - 1;
+                var lastRoll = RollIndex - 1;
                 if (IsStrike(lastRoll))
                 {
-                    LeftPines = IsStrike(_currentRoll) ? MaxPines : LeftPines - rollResult;
+                    LeftPines = IsStrike(RollIndex) ? MaxPines : LeftPines - rollResult;
                     NextRoll();
                 }
                 else
                 {
-                    if (IsSpare(_currentRoll))
+                    if (IsSpare(RollIndex))
                     {
                         NextRoll();
                         ResetPines();
@@ -151,7 +149,7 @@ namespace Game
         #region Check Score
         public bool IsStrike(int rollIndex) => RollsResult[rollIndex] == MaxPines;
 
-        public bool IsSpare(int rollIndex) =>  RollsResult[rollIndex] == LeftPines;
+        public bool IsSpare(int rollIndex) => RollsResult[rollIndex] == LeftPines;
 
         public bool IsGutter(int rollIndex) => RollsResult[rollIndex] == 0;
         #endregion Check Score
@@ -162,13 +160,9 @@ namespace Game
 
         private void ResetPines() => LeftPines = MaxPines;
 
-        public bool IsEndGame() => _currentRound >= TotalRounds;
+        public bool IsEndGame() => RoundIndex >= TotalRounds;
 
-        public void NextRoll() => _currentRoll++;
-
-        public int GetCurrentRound() => _currentRound;
-
-        public int GetRollIndex() => _currentRoll;
+        private void NextRoll() => RollIndex++;
 
         public int GetTotalScore() => RollsResult.Sum();
 
