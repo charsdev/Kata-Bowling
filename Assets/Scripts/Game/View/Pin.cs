@@ -8,16 +8,13 @@ namespace Game
         private Quaternion _originalRotation;
         private Vector3 _originalScale;
         private Rigidbody _rigidbody;
-        public bool IsFall;
 
         public void Reset()
         {
-            transform.position = _originalPosition;
-            transform.rotation = _originalRotation;
+            transform.SetPositionAndRotation(_originalPosition, _originalRotation);
             transform.localScale = _originalScale;
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
-            IsFall = false;
             gameObject.SetActive(true);
         }
 
@@ -29,9 +26,7 @@ namespace Game
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            IsFall = true;
-        }
+        public bool IsStanding => _originalRotation == transform.rotation;
+
     }
 }

@@ -19,7 +19,7 @@ namespace Game
         {
             foreach (var item in Pins)
             {
-                if (item.IsFall)
+                if (!item.IsStanding)
                 {
                     item.gameObject.SetActive(false);
                 }
@@ -32,7 +32,7 @@ namespace Game
 
             foreach (var item in Pins)
             {
-                if (item.IsFall && item.gameObject.activeSelf)
+                if (item.gameObject.activeSelf && !item.IsStanding)
                 {
                     sum++;
                 }

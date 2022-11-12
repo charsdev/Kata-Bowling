@@ -7,12 +7,18 @@ namespace Game
         private Vector3 _ballStartPos;
         private Rigidbody _rigidBody;
         public float Power;
+        private float moveSpeed = 5f;
 
         void Start()
         {
             _rigidBody = GetComponent<Rigidbody>();
             _rigidBody.useGravity = false;
             _ballStartPos = transform.position;
+        }
+
+        public void MoveToDirection(Vector3 direction)
+        {
+            _rigidBody.position += (moveSpeed * Time.deltaTime * direction);
         }
 
         public void Launch()

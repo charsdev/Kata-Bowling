@@ -12,7 +12,10 @@ namespace Game
         private Vector3 _initialPosition;
         private Vector3 _targetPosition;
         public UnityEvent OnFinishFollow;
+        public AnimationCurve MoveCurve;
+
         public bool Finished;
+        public bool WaitingToFinish;
 
         private void Start()
         {
@@ -29,6 +32,7 @@ namespace Game
         private IEnumerator FollowCoroutine(float time)
         {
             Finished = false;
+            WaitingToFinish = false;
 
             Vector3 startingPos = transform.position;
             Vector3 finalPos = _targetPosition;
@@ -36,10 +40,12 @@ namespace Game
 
             while (elapsedTime < time)
             {
-                transform.position = Vector3.Lerp(startingPos, finalPos, elapsedTime / time);
+                transform.position = Vector3.Lerp(startingPos, finalPos, MoveCurve.Evaluate(elapsedTime / time));
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
+
+            WaitingToFinish = true;
 
             yield return new WaitForSeconds(_WaitTime);
             OnFinishFollow?.Invoke();

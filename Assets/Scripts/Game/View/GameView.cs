@@ -1,32 +1,40 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections;
 
 namespace Game
 {
+    [System.Serializable]
+    public struct FeedBackText
+    {
+        public TextMeshProUGUI Strike;
+        public TextMeshProUGUI Spare;
+        public TextMeshProUGUI Gutter;
+        public TextMeshProUGUI PinesPoints;
+    }
+
     public class GameView : MonoBehaviour
     {
         [SerializeField] private Button _buttonThrow;
+        [SerializeField] private CustomButton _buttonLeft;
+        [SerializeField] private CustomButton _buttonRight;
+
         [SerializeField] private TextMeshProUGUI _signEnd;
         [SerializeField] private TurnResult[] _turnResultsUI;
         [SerializeField] private Ball _ball;
         [SerializeField] private Frame frame;
         [SerializeField] private CameraFollow _cameraFollow;
 
-        public TextMeshProUGUI[] feedbackText;
+        public FeedBackText FeedbackText;
 
         private GamePresenter _presenter;
-
-        public Frame GetFrame()
-        {
-            return frame;
-        }
 
         private void Awake()
         {
             _presenter = new GamePresenter(this);
-            _buttonThrow.onClick.AddListener(() => _presenter.Throw());
+            _buttonThrow.onClick.AddListener(() => StartCoroutine(_presenter.ThrowCoroutine()));
+            GetButtonRight().OnHeld.AddListener(() => _ball.MoveToDirection(Vector3.right));
+            GetButtonLeft().OnHeld.AddListener(() => _ball.MoveToDirection(Vector3.left));
         }
 
         public void UpdateScoreBoard(int currentTurn, int indexPos, string print)
@@ -34,18 +42,22 @@ namespace Game
             _turnResultsUI[currentTurn].SetNumberTurn(indexPos, print);
         }
 
+        public Button GetButton() => _buttonThrow;
 
-        internal Button GetButton() => _buttonThrow;
+        public Ball GetBall() => _ball;
 
-        internal Ball GetBall() => _ball;
+        public CustomButton GetButtonLeft() => _buttonLeft;
 
-        internal CameraFollow GetCameraFollow() => _cameraFollow;
+        public CustomButton GetButtonRight() => _buttonRight;
+
+        public Frame GetFrame() => frame;
+
+        public CameraFollow GetCameraFollow() => _cameraFollow;
 
         public void SeeEndSign(int amount)
         {
             _signEnd.text = $"AWESOME! YOUR SCORE IS <color=#FF0000>{amount}</color> POINTS!";
             _signEnd.gameObject.SetActive(true);
         }
-
     }
 }
