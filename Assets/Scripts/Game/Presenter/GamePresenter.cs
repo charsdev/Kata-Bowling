@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -16,7 +14,8 @@ namespace Game
             _model = new GameModel();
 
             var camera = _view.GetCameraFollow();
-            camera.OnFinishFollow.AddListener(HideFeedback);
+            camera.OnFinishFollow.AddListener(_view.HideFeedback);
+            camera.OnFinishFollow.AddListener(_view.HideFeedback);
         }
 
         private int GetRandomFallPines(int max) => Random.Range(0, max + 1);
@@ -40,10 +39,10 @@ namespace Game
         {
             if (_model.IsEndGame())
             {
-                DisableThrowButton();
+                _view.DisableThrowButton();
                 DrawScores();
                 return;
-            }    
+            }
 
             #region Effects
             var ball = _view.GetBall();
@@ -103,18 +102,16 @@ namespace Game
             }
         }
 
-        public void HideFeedback()
-        {
-            _view.FeedbackText.Strike.gameObject.SetActive(false);
-            _view.FeedbackText.Spare.gameObject.SetActive(false);
-            _view.FeedbackText.Gutter.gameObject.SetActive(false);
-            _view.FeedbackText.PinesPoints.gameObject.SetActive(false);
-        }
-
         public IEnumerator ThrowCoroutine()
         {
-            _view.GetButtonLeft().gameObject.SetActive(false);
-            _view.GetButtonRight().gameObject.SetActive(false);
+            var frame = _view.GetFrame();
+            frame.UnFreezePins();
+
+            var buttonLeft = _view.GetButtonLeft();
+            var buttonRight = _view.GetButtonRight();
+
+            _view.SetEnableButton(buttonLeft, false);
+            _view.SetEnableButton(buttonRight, false);
             _view.GetBall().Launch();
 
             var cameraFollow = _view.GetCameraFollow();
@@ -127,7 +124,6 @@ namespace Game
                 yield return null;
             }
 
-            var frame = _view.GetFrame();
             var rollResult = frame.GetPinsFalled();
             _model.SaveResult(currentRollIndex, rollResult);
 
@@ -140,8 +136,8 @@ namespace Game
                 yield return null;
             }
 
-            _view.GetButtonLeft().gameObject.SetActive(true);
-            _view.GetButtonRight().gameObject.SetActive(true);
+            _view.SetEnableButton(buttonLeft, true);
+            _view.SetEnableButton(buttonRight, true);
 
             //Handle next turn
             var currentRound = _model.RoundIndex;
@@ -162,14 +158,13 @@ namespace Game
             {
                 frame.HideFalledPins();
             }
-        }
 
-        private void DisableThrowButton()
-        {
-            var button = _view.GetButton();
-            if (button.interactable)
+            if (_model.IsEndGame())
             {
-                button.interactable = false;
+                _view.DisableThrowButton();
+                _view.SetEnableButton(buttonLeft, false);
+                _view.SetEnableButton(buttonRight, false);
+                DrawScores();
             }
         }
     }

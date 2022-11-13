@@ -18,7 +18,6 @@ namespace Game
         [SerializeField] private Button _buttonThrow;
         [SerializeField] private CustomButton _buttonLeft;
         [SerializeField] private CustomButton _buttonRight;
-
         [SerializeField] private TextMeshProUGUI _signEnd;
         [SerializeField] private TurnResult[] _turnResultsUI;
         [SerializeField] private Ball _ball;
@@ -58,6 +57,27 @@ namespace Game
         {
             _signEnd.text = $"AWESOME! YOUR SCORE IS <color=#FF0000>{amount}</color> POINTS!";
             _signEnd.gameObject.SetActive(true);
+        }
+
+        public void DisableThrowButton()
+        {
+            if (_buttonThrow.interactable)
+            {
+                _buttonThrow.interactable = false;
+            }
+        }
+
+        public void HideFeedback()
+        {
+            FeedbackText.Strike.gameObject.SetActive(false);
+            FeedbackText.Spare.gameObject.SetActive(false);
+            FeedbackText.Gutter.gameObject.SetActive(false);
+            FeedbackText.PinesPoints.gameObject.SetActive(false);
+        }
+
+        public void SetEnableButton(Button button, bool state)
+        {
+            button.gameObject.SetActive(state);
         }
     }
 }

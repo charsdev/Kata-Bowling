@@ -15,6 +15,14 @@ namespace Game
             }
         }
 
+        public void UnFreezePins()
+        {
+            foreach (var item in Pins)
+            {
+                item.UnFreeze();
+            }
+        }
+
         public void HideFalledPins()
         {
             foreach (var item in Pins)
@@ -35,6 +43,10 @@ namespace Game
                 if (item.gameObject.activeSelf && !item.IsStanding)
                 {
                     sum++;
+                }
+                else
+                {
+                    item.Freeze();
                 }
             }
            

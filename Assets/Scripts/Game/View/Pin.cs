@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Game
 {
@@ -15,16 +16,30 @@ namespace Game
             transform.localScale = _originalScale;
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.angularVelocity = Vector3.zero;
+            UnFreeze();
             gameObject.SetActive(true);
         }
-
+  
         private void OnEnable()
         {
             _originalPosition = transform.position;
             _originalRotation = transform.rotation;
             _originalScale = transform.localScale;
             _rigidbody = GetComponent<Rigidbody>();
+            Freeze();
         }
+
+
+        public void Freeze()
+        {
+            _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        }
+
+        public void UnFreeze()
+        {
+            _rigidbody.constraints = RigidbodyConstraints.None;
+        }
+
 
         public bool IsStanding => _originalRotation == transform.rotation;
 
